@@ -86,38 +86,35 @@ One challenge with this data is that finding hepatocytes in lymph nodes could be
 
 No genes were significantly upregulated in metastasis at the applied significance threshold, which itself is an interesting biological finding — the metastatic hepatocytes are transcriptionally similar to primary ones, with changes driven more by microenvironment composition than intrinsic DE.
 
+
 ## Repository Structure
 
-All my final results are kept at the root of the repository for easy access:
-├── hcc project coding.R
-├── HCC_UMAP.png
-├── 01_umap_by_celltype.png
-├── 02_umap_by_tissue.png
-├── 04_QC_violin.png
-├── 05_dotplot_markers.png
-├── 06_celltype_proportions_boxplot.png
-├── 07_RO_E_heatmap.png
-├── 08_hepatocyte_marker_check.png
-├── cluster_counts.csv
-├── metadata.csv
-├── Cell_Proportions.csv
-├── Top_Markers.csv
-├── 01_celltype_proportions_PT_vs_Met.csv
-├── 04_RO_E_celltype_by_site.csv
-├── 05_DE_pseudobulk_hepatocyte.csv
-├── barcodes.tsv
-├── genes.tsv
-└── README.md
-- cluster_counts.csv - number of cells per cluster (my final counts)
-- metadata.csv - full cell metadata with cluster, celltype, tissue, patient
-- HCC_UMAP.png - my final UMAP
+| File Name | Description |
+| :--- | :--- |
+| `hcc_project_coding.R` | Main analysis script (Seurat pipeline: QC, normalization, clustering, UMAP) |
+| `barcodes.tsv` | Cell barcodes |
+| `genes.tsv` | Gene features |
+| `metadata.csv` | Cell-level metadata (cluster, cell type, tissue type, patient ID) |
+| `HCC_UMAP.png` | UMAP colored by cluster |
+| `01_umap_by_celltype.png` | UMAP colored by cell type |
+| `02_umap_by_tissue.png` | UMAP colored by tissue origin |
+| `04_QC_violin.png` | QC violin plots |
+| `05_dotplot_markers.png` | DotPlot of canonical markers |
+| `06_celltype_proportions_boxplot.png` | Boxplot of cell type proportions |
+| `07_RO_E_heatmap.png` | RO/E enrichment heatmap |
+| `08_hepatocyte_marker_check.png` | Hepatocyte marker validation |
+| `11_volcano_DE_hepatocyte.png` | Volcano plot - hepatocyte DE (Met vs Primary) |
+| `cluster_counts.csv` | Number of cells per cluster |
+| `Cell_Proportions.csv` | Overall cell type proportions |
+| `Top_Markers.csv` | Top markers per cluster |
+| `01_celltype_proportions_PT_vs_Met.csv` | Cell type proportions PT vs Metastasis |
+| `04_RO_E_celltype_by_site.csv` | RO/E score by tissue site |
+| `05_DE_pseudobulk_hepatocyte.csv` | Pseudobulk DE results for hepatocytes |
 
 ## Tools & Technologies
-
-- *R* with *Seurat* — QC, normalization, PCA/UMAP, clustering
-- *ggplot2* — all visualizations
-- *DESeq2* — pseudobulk differential expression
-- *dplyr* — data wrangling
+- **R / Seurat** - QC, normalization, PCA/UMAP, clustering
+- **ggplot2** - all visualizations
+- **DESeq2** - pseudobulk differential expression
 
 ## How to Reproduce
 
