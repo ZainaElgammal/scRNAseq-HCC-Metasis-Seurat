@@ -110,7 +110,28 @@ No genes were significantly upregulated in metastasis at the applied significanc
 | `01_celltype_proportions_PT_vs_Met.csv` | Cell type proportions PT vs Metastasis |
 | `04_RO_E_celltype_by_site.csv` | RO/E score by tissue site |
 | `05_DE_pseudobulk_hepatocyte.csv` | Pseudobulk DE results for hepatocytes |
+---
 
+## Intercellular Communication & Functional Enrichment Analysis
+
+### 1. Ligand–Receptor Crosstalk (SingleCellSignalR)
+![Metastatic HCC Ligand-Receptor Bubble Plot](Metastatic_HCC_LR_BubblePlot.png)
+
+Paracrine cell–cell communication was inferred across primary tumor and metastatic lesions (PVTT and MLN) using SingleCellSignalR (SCSRNoNet, min.logFC = 0.01, max.pval = 0.1). Metastatic lesions exhibited markedly enriched stromal–vascular crosstalk compared to primary tumors, dominated by endothelial-to-fibroblast signaling axes (PKM -> CD44, HGF -> CD44, FN1 -> CD44, and FGL1 -> EGFR), alongside reciprocal fibroblast-to-endothelial (CALM1 -> EGFR, CALM1 -> FAS, ANXA1 -> EGFR, B2M -> KIR3DL2/4) and B-cell (CD48 -> CD2) interactions.
+
+---
+
+### 2. Expression Validation of Key Signaling Genes
+![Expression of Key Ligand-Receptor Genes](HCC_LR_Genes_DotPlot.png)
+
+Comparative expression profiling across cell types and anatomical sites confirmed strong upregulation of PKM, HGF, FN1, and CD44 specifically within metastatic endothelial and fibroblast populations (PVTT and Lymph), as well as CD48 and CD2 enrichment in lymphoid compartments.
+
+---
+
+### 3. Gene Ontology (GO) Biological Process Enrichment
+![Enriched Biological Processes in Metastatic HCC](Metastatic_HCC_GO_Enrichment.png)
+
+Functional enrichment analysis (clusterProfiler) of the top metastatic ligand–receptor genes revealed significant overrepresentation of biological processes driving tumor dissemination and immune modulation, including *cell–cell adhesion, **wound healing, **regulation of T-cell activation, and **natural killer (NK) cell-mediated immunity*.
 ## Tools & Technologies
 - **R / Seurat** - QC, normalization, PCA/UMAP, clustering
 - **ggplot2** - all visualizations
