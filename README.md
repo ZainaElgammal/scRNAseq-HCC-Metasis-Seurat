@@ -111,37 +111,51 @@ No genes were significantly upregulated in metastasis at the applied significanc
 | `04_RO_E_celltype_by_site.csv` | RO/E score by tissue site |
 | `05_DE_pseudobulk_hepatocyte.csv` | Pseudobulk DE results for hepatocytes |
 ---
+### 7. Cell–Cell Communication & Ligand–Receptor Crosstalk (`SingleCellSignalR`)
+To investigate how stromal, vascular, and immune compartments interact during metastatic progression, paracrine ligand–receptor signaling was inferred separately across primary tumor (`PT`) and metastatic lesions (`PVTT` + `MLN`) using `SingleCellSignalR` (`SCSRNoNet`, `min.logFC = 0.01`, `max.pval = 0.1`):
 
-## Intercellular Communication & Functional Enrichment Analysis
+* **Key Finding:** Metastatic niches exhibited markedly enriched endothelial–fibroblast crosstalk compared to primary tumors, dominated by pro-invasive and ECM-remodeling axes (`PKM -> CD44`, `HGF -> CD44`, `FN1 -> CD44`, and `FGL1 -> EGFR`), alongside reciprocal fibroblast-to-endothelial (`CALM1 -> EGFR`, `CALM1 -> FAS`, `ANXA1 -> EGFR`, `B2M -> KIR3DL2/4`) and B-cell (`CD48 -> CD2`) signaling.
+* **Expression Validation:** Site-stratified `DotPlot` profiling confirmed elevated expression of `PKM`, `HGF`, `FN1`, and `CD44` specifically within metastatic endothelial and fibroblast subsets (`PVTT` and `Lymph`), as well as `CD48`/`CD2` enrichment in lymphoid populations.
 
-### 1. Ligand–Receptor Crosstalk (SingleCellSignalR)
 ![Metastatic HCC Ligand-Receptor Bubble Plot](Metastatic-HCC-LR-BubblePlot.png)
 
-Paracrine cell–cell communication was inferred across primary tumor and metastatic lesions (PVTT and MLN) using SingleCellSignalR (SCSRNoNet, min.logFC = 0.01, max.pval = 0.1). Metastatic lesions exhibited markedly enriched stromal–vascular crosstalk compared to primary tumors, dominated by endothelial-to-fibroblast signaling axes (PKM -> CD44, HGF -> CD44, FN1 -> CD44, and FGL1 -> EGFR), alongside reciprocal fibroblast-to-endothelial (CALM1 -> EGFR, CALM1 -> FAS, ANXA1 -> EGFR, B2M -> KIR3DL2/4) and B-cell (CD48 -> CD2) interactions.
-
----
-
-### 2. Expression Validation of Key Signaling Genes
 ![Expression of Key Ligand-Receptor Genes](HCC-LR-Genes-DotPlot.png)
 
-Comparative expression profiling across cell types and anatomical sites confirmed strong upregulation of PKM, HGF, FN1, and CD44 specifically within metastatic endothelial and fibroblast populations (PVTT and Lymph), as well as CD48 and CD2 enrichment in lymphoid compartments.
+---
+
+### 8. Functional Pathway Enrichment (`clusterProfiler`)
+Over-representation analysis (ORA) of Gene Ontology Biological Processes (`GO:BP`, Benjamini–Hochberg adjusted $p < 0.05$) was performed on the top metastatic ligand–receptor gene set using `clusterProfiler` and `org.Hs.eg.db`:
+
+* **Enriched Pathways:** Signaling genes converged significantly on **cell–cell adhesion**, **wound healing**, **regulation of T-cell activation**, and **natural killer (NK) cell-mediated immunity**, linking stromal remodeling with immune checkpoint/cytotoxic modulation in metastatic sites.
+
+![Enriched Biological Processes in Metastatic HCC](Metastatic-HCC-GO-Enrichment.png)
 
 ---
 
-### 3. Gene Ontology (GO) Biological Process Enrichment
-![Enriched Biological Processes in Metastatic HCC](Metastatic-HCC-GO-Enrichment.png)
-
-Functional enrichment analysis (clusterProfiler) of the top metastatic ligand–receptor genes revealed significant overrepresentation of biological processes driving tumor dissemination and immune modulation, including *cell–cell adhesion, **wound healing, **regulation of T-cell activation, and **natural killer (NK) cell-mediated immunity*
 ## Tools & Technologies
 - **R / Seurat** - QC, normalization, PCA/UMAP, clustering
 - **ggplot2** - all visualizations
 - **DESeq2** - pseudobulk differential expression
+- **SingleCellSignalR** — paracrine ligand–receptor interaction inference
+* **clusterProfiler & org.Hs.eg.db** — Gene Ontology (`GO:BP`) functional enrichment
+
+
+
 
 ## How to Reproduce
 
 1. Clone this repo
 2. Open hcc project coding.R — it covers the full pipeline from QC and normalization through clustering, annotation, compositional analysis, and pseudobulk DE
 3. Running the script regenerates all the .csv result tables and .png figures listed above
+| `LR-Analysis.R` | Ligand–receptor intercellular communication pipeline (`SingleCellSignalR`) |
+| `LR-Genes-DotPlots.R` | Site-stratified expression validation of key ligand–receptor genes |
+| `GO-Enrichment.R` | Gene Ontology (`GO:BP`) functional enrichment script (`clusterProfiler`) |
+| `Metastasis_LR_interactions.csv` | Top inferred paracrine ligand–receptor pairs in metastatic lesions |
+| `Metastatic_HCC_GO_Enrichment.csv` | Statistically enriched GO Biological Process terms (`BH` adjusted) |
+| `Metastatic-HCC-LR-BubblePlot.png` | Bubble plot of top metastatic ligand–receptor interactions and LR scores |
+| `HCC-LR-Genes-DotPlot.png` | Comparative DotPlot of key signaling genes across cell types and tissue sites |
+| `Metastatic-HCC-GO-Enrichment.png` | DotPlot of top enriched biological processes in metastatic crosstalk |
+
 
 ## Author
 
