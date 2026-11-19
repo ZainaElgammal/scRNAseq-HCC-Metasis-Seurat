@@ -110,6 +110,14 @@ No genes were significantly upregulated in metastasis at the applied significanc
 | `01_celltype_proportions_PT_vs_Met.csv` | Cell type proportions PT vs Metastasis |
 | `04_RO_E_celltype_by_site.csv` | RO/E score by tissue site |
 | `05_DE_pseudobulk_hepatocyte.csv` | Pseudobulk DE results for hepatocytes |
+| `LR-Analysis.R` | Ligand–receptor intercellular communication pipeline (`SingleCellSignalR`) |
+| `LR-Genes-DotPlots.R` | Site-stratified expression validation of key ligand–receptor genes |
+| `GO-Enrichment.R` | Gene Ontology (`GO:BP`) functional enrichment script (`clusterProfiler`) |
+| `Metastasis_LR_interactions.csv` | Top inferred paracrine ligand–receptor pairs in metastatic lesions |
+| `Metastatic_HCC_GO_Enrichment.csv` | Statistically enriched GO Biological Process terms (`BH` adjusted) |
+| `Metastatic-HCC-LR-BubblePlot.png` | Bubble plot of top metastatic ligand–receptor interactions and LR scores |
+| `HCC-LR-Genes-DotPlot.png` | Comparative DotPlot of key signaling genes across cell types and tissue sites |
+| `Metastatic-HCC-GO-Enrichment.png` | DotPlot of top enriched biological processes in metastatic crosstalk |
 ---
 ### 7. Cell–Cell Communication & Ligand–Receptor Crosstalk (`SingleCellSignalR`)
 To investigate how stromal, vascular, and immune compartments interact during metastatic progression, paracrine ligand–receptor signaling was inferred separately across primary tumor (`PT`) and metastatic lesions (`PVTT` + `MLN`) using `SingleCellSignalR` (`SCSRNoNet`, `min.logFC = 0.01`, `max.pval = 0.1`):
@@ -144,17 +152,12 @@ Over-representation analysis (ORA) of Gene Ontology Biological Processes (`GO:BP
 
 ## How to Reproduce
 
-1. Clone this repo
+1. Clone this repository
 2. Open hcc project coding.R — it covers the full pipeline from QC and normalization through clustering, annotation, compositional analysis, and pseudobulk DE
-3. Running the script regenerates all the .csv result tables and .png figures listed above
-| `LR-Analysis.R` | Ligand–receptor intercellular communication pipeline (`SingleCellSignalR`) |
-| `LR-Genes-DotPlots.R` | Site-stratified expression validation of key ligand–receptor genes |
-| `GO-Enrichment.R` | Gene Ontology (`GO:BP`) functional enrichment script (`clusterProfiler`) |
-| `Metastasis_LR_interactions.csv` | Top inferred paracrine ligand–receptor pairs in metastatic lesions |
-| `Metastatic_HCC_GO_Enrichment.csv` | Statistically enriched GO Biological Process terms (`BH` adjusted) |
-| `Metastatic-HCC-LR-BubblePlot.png` | Bubble plot of top metastatic ligand–receptor interactions and LR scores |
-| `HCC-LR-Genes-DotPlot.png` | Comparative DotPlot of key signaling genes across cell types and tissue sites |
-| `Metastatic-HCC-GO-Enrichment.png` | DotPlot of top enriched biological processes in metastatic crosstalk |
+3. 3. Run `LR-Analysis.R`, `LR-Genes-DotPlots.R`, and `GO-Enrichment.R` for ligand–receptor crosstalk and functional GO enrichment
+4. Running the script regenerates all the .csv result tables and .png figures listed above
+
+
 
 
 ## Author
