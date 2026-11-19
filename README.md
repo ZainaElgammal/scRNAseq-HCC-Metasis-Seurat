@@ -1,4 +1,5 @@
 # Single-Cell RNA-seq Analysis of Hepatocellular Carcinoma (HCC) Metastasis
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24377360.svg)](https://doi.org/10.5281/zenodo.24377360)
 
 R · Seurat · DESeq2 · *Status: Completed* · *License: MIT*
 
