@@ -156,11 +156,9 @@ Over-representation analysis (ORA) of Gene Ontology Biological Processes (`GO:BP
 ## How to Reproduce
 
 1. Clone this repository
-2. Open hcc project coding.R — it covers the full pipeline from QC and normalization through clustering, annotation, compositional analysis, and pseudobulk DE
-3. 3. Run `LR-Analysis.R`, `LR-Genes-DotPlots.R`, and `GO-Enrichment.R` for ligand–receptor crosstalk and functional GO enrichment
-4. Running the script regenerates all the .csv result tables and .png figures listed above
-
-
+2. Run LR-Analysis.R and LR-Genes-DotPlots.R for ligand-receptor cell-cell communication analysis and site-stratified expression validation
+3. Run GO-Enrichment.R for Gene Ontology (GO:BP) functional enrichment analysis and span analysis
+4. Running the scripts regenerates the .csv result tables and .png figures listed above
 
 
 ## Author
