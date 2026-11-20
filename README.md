@@ -92,7 +92,9 @@ No genes were significantly upregulated in metastasis at the applied significanc
 
 | File Name | Description |
 | :--- | :--- |
-| `hcc_project_coding.R` | Main analysis script (Seurat pipeline: QC, normalization, clustering, UMAP) |
+| `LR-Analysis.R | Ligand-receptor cell-cell communication analysis script |
+| `LR-Genes-DotPlots.R | Dot plot visualization script for ligand-receptor genes |
+| `GO-Enrichment.R | Gene Ontology (GO) functional enrichment analysis script | Main analysis script (Seurat pipeline: QC, normalization, clustering, UMAP)
 | `barcodes.tsv` | Cell barcodes |
 | `genes.tsv` | Gene features |
 | `metadata.csv` | Cell-level metadata (cluster, cell type, tissue type, patient ID) |
